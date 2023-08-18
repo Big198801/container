@@ -10,6 +10,7 @@ docker run docker/whalesay cowsay -f elephant "Hello, Docker!"
 docker run -it -h GB --name gb-test ubuntu:22.10
 ```
 ![](/hw3/img/2.png)
+
 Создадим новую директорию в корне:
 ```
 mkdir /example
@@ -32,6 +33,7 @@ exit
 ```
 
 ![](/hw3/img/4.png)
+
 Наши данные сохранятся, так как мы не пересоздавали контейнер.
 
 4. Удалим контейнер и создадим его заново, используя те же команды.
@@ -45,6 +47,7 @@ docker stop gb-test
 docker rm gb-test
 ```
 ![](/hw3/img/5.png)
+
 В этот раз наши данные будут утеряны, так как контейнер был удален.
 
 5.  Создадим директорию и подмонтируем ее к контейнеру.
@@ -71,6 +74,7 @@ docker stop gb-test
 docker rm gb-test
 ```
 ![](/hw3/img/8.png)
+
 Самый надежный способ хранения данных в контейнерах - использование внешних хранилищ.
 
 8. Хранение данных в контейнерах Docker.
@@ -83,4 +87,5 @@ echo "This is the root test.txt file" > ~/test.txt
 docker run -it -h GB --name gb-test -v ~/docker-mount-example:/container-mount -v ~/test.txt:/container-mount/test.txt ubuntu:22.10
 ```
 ![](/hw3/img/9.png)
+
 Содержимое `/container-mount/test.txt` перезаписалось вторым монтированием из файла `~/test.txt`.
